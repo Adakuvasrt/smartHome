@@ -24,10 +24,7 @@ public class DataFresh {
     public float yAxis;
     public float zAxis;
 
-
     private DataFresh() {
-
-
     }
 
     //静态内部类在使用时加载,并且是线程安全的
@@ -61,7 +58,11 @@ public class DataFresh {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            inputStream = socket.getInputStream();
+            try {
+                inputStream = socket.getInputStream();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             byte[] bytes = new byte[30];
             while (true) {

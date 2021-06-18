@@ -171,7 +171,7 @@ public class IndexFragment extends Fragment {
                 }
                 System.out.println(thread.getState());
 //                thread.start();
-//                binding.connectInfo.setClickable(false);
+                binding.connectInfo.setClickable(false);
                 binding.connectInfo.setText("~ 连接成功");
                 binding.connectInfo.setTextColor(Color.parseColor("#767676"));
             });
@@ -219,11 +219,8 @@ public class IndexFragment extends Fragment {
 
     @Override
     public void onStart() {
-        Log.i("TAG", "onStart: " + thread.getState());
         super.onStart();
-        System.out.println(thread.getState());
         if (thread.getState() == Thread.State.TERMINATED | thread.getState() == Thread.State.NEW) {
-            System.out.println("?");
             thread = new Thread(() -> {
                 while (true) {
                     getActivity().runOnUiThread(() -> {
