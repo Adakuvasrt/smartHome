@@ -102,6 +102,7 @@
                 android:textColor="#fff" />
 
             <TextView
+                android:id="@+id/template_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -112,7 +113,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/light_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -150,6 +151,7 @@
                 android:textColor="#fff" />
 
             <TextView
+                android:id="@+id/light_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -160,7 +162,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+        android:id="@+id/machine_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -200,6 +202,7 @@
                 android:textColor="#fff" />
 
             <TextView
+                android:id="@+id/machine_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -210,7 +213,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView7"
+        android:id="@+id/y_axis_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -249,6 +252,7 @@
                 android:textColor="#fff" />
 
             <TextView
+                android:id="@+id/y_axis_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -259,7 +263,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/humidity"
+        android:id="@+id/humidity_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -297,6 +301,7 @@
                 android:textColor="#fff" />
 
             <TextView
+                android:id="@+id/humidity_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -307,7 +312,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView6"
+        android:id="@+id/electricity_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -348,6 +353,7 @@
                 android:textColor="#fff" />
 
             <TextView
+                android:id="@+id/electricity_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -358,7 +364,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView9"
+        android:id="@+id/x_axis_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -398,6 +404,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/x_axis_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -409,6 +416,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/z_axis_card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -420,7 +428,7 @@
         app:cardElevation="1dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView7"
+        app:layout_constraintStart_toEndOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="@+id/guideline9">
 
         <LinearLayout
@@ -447,6 +455,7 @@
                 android:textColor="#fff" />
 
             <TextView
+                android:id="@+id/z_axis_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -464,23 +473,23 @@
         app:layout_constraintGuide_percent="0.07" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/warehouse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="仓库编号: 2 >"
         android:textSize="26sp"
         android:textColor="#000"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/connect_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:textSize="18sp"
         android:text="💕 8.136.16.198 | 8848"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
