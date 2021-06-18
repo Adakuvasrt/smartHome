@@ -138,12 +138,7 @@ public class DetailInfoFragment extends Fragment {
         thread = new Thread(() -> {
             int x = 0;
             while (!thread.isInterrupted()) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    return;
-                }
+
                 LineData lineData1 = binding.lineChart.getLineData();
                 XAxis xxAxis = binding.lineChart.getXAxis();
                 final ILineDataSet dataSetByIndex = lineData.getDataSetByIndex(0);
@@ -208,6 +203,12 @@ public class DetailInfoFragment extends Fragment {
                 }
                 binding.lineChart.notifyDataSetChanged();
                 binding.lineChart.invalidate();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return;
+                }
             }
 
         });

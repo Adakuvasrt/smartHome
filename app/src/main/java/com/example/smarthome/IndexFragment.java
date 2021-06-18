@@ -2,6 +2,7 @@ package com.example.smarthome;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,12 +40,7 @@ public class IndexFragment extends Fragment {
         thread = new Thread(() -> {
             while (true) {
                 if (thread.isInterrupted()) break;
-                try {
-                    Thread.sleep(900);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    break;
-                }
+
                 getActivity().runOnUiThread(() -> {
                     binding.templateNum.setText(String.valueOf(DataFresh.getInstance().temperature));
                     binding.humidityNum.setText(String.valueOf(DataFresh.getInstance().humility));
@@ -55,6 +51,12 @@ public class IndexFragment extends Fragment {
                     binding.yAxisNum.setText(String.valueOf(DataFresh.getInstance().yAxis));
                     binding.zAxisNum.setText(String.valueOf(DataFresh.getInstance().zAxis));
                 });
+                try {
+                    Thread.sleep(900);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    break;
+                }
             }
         });
 //        onInitBtn();
@@ -161,6 +163,8 @@ public class IndexFragment extends Fragment {
                 System.out.println(thread.getState());
 //                thread.start();
                 binding.connectInfo.setClickable(false);
+                binding.connectInfo.setText("~ 连接成功");
+                binding.connectInfo.setTextColor(Color.parseColor("#767676"));
             });
             builder.setNegativeButton("取消", (dialog, which) -> Log.i("info", "onClick: "));
             builder.create().show();
@@ -187,13 +191,6 @@ public class IndexFragment extends Fragment {
             System.out.println("?");
             thread = new Thread(() -> {
                 while (true) {
-                    if (thread.isInterrupted()) break;
-                    try {
-                        Thread.sleep(900);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        break;
-                    }
                     getActivity().runOnUiThread(() -> {
                         binding.templateNum.setText(String.valueOf(DataFresh.getInstance().temperature));
                         binding.humidityNum.setText(String.valueOf(DataFresh.getInstance().humility));
@@ -204,6 +201,13 @@ public class IndexFragment extends Fragment {
                         binding.yAxisNum.setText(String.valueOf(DataFresh.getInstance().yAxis));
                         binding.zAxisNum.setText(String.valueOf(DataFresh.getInstance().zAxis));
                     });
+                    if (thread.isInterrupted()) break;
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        break;
+                    }
                 }
             });
             thread.start();

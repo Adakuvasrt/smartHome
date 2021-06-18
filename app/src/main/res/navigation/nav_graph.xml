@@ -10,25 +10,9 @@
         android:label="fragment_index"
         tools:layout="@layout/fragment_index">
         <action
-            android:id="@+id/action_indexFragment_to_temperatureFragment"
-            app:destination="@id/temperatureFragment" />
-        <action
-            android:id="@+id/action_indexFragment_to_humidityFragment"
-            app:destination="@id/humidityFragment" />
-        <action
             android:id="@+id/action_indexFragment_to_detailInfoFragment"
             app:destination="@id/detailInfoFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/temperatureFragment"
-        android:name="com.example.smarthome.TemperatureFragment"
-        android:label="fragment_temperature"
-        tools:layout="@layout/fragment_temperature" />
-    <fragment
-        android:id="@+id/humidityFragment"
-        android:name="com.example.smarthome.HumidityFragment"
-        android:label="fragment_humidity"
-        tools:layout="@layout/fragment_humidity" />
     <fragment
         android:id="@+id/detailInfoFragment"
         android:name="com.example.smarthome.DetailInfoFragment"
