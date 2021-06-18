@@ -44,12 +44,6 @@ public class IndexFragment extends Fragment {
             navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
         });
 
-        binding.humidity.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(v);
-            Bundle bundle = new Bundle();
-            bundle.putString("info", "Humidity");
-            navController.navigate(R.id.action_indexFragment_to_humidityFragment, bundle);
-        });
 
     }
 

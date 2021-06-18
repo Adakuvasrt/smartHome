@@ -48,7 +48,7 @@ public class DetailInfoFragment extends Fragment {
         assert arguments != null;
         String info = arguments.getString("info");
         binding.lineChart.setNoDataText("没有获取到数据哦~");
-        binding.lineChart.setNoDataTextColor(Color.parseColor("#3860c6"));
+        binding.lineChart.setNoDataTextColor(Color.parseColor("#487cfb"));
         //缩放
         binding.lineChart.setScaleEnabled(true);
         //显示高亮
@@ -117,14 +117,14 @@ public class DetailInfoFragment extends Fragment {
         //将数据赋给数据集,一个数据集表示一条线
         LineDataSet lineDataSet = new LineDataSet(entries, "");
         //线颜色
-        lineDataSet.setColor(Color.parseColor("#3860c6"));
+        lineDataSet.setColor(Color.parseColor("#487cfb"));
         //线宽度
         lineDataSet.setLineWidth(1.0f);
         //数值上的字体大小
         lineDataSet.setValueTextSize(14f);
         //显示圆点
         lineDataSet.setDrawCircles(true);
-        lineDataSet.setHighLightColor(Color.parseColor("#3860c6")); // 设置点击某个点时，横竖两条线的颜色
+        lineDataSet.setHighLightColor(Color.parseColor("#487cfb")); // 设置点击某个点时，横竖两条线的颜色
         lineDataSet.setHighlightLineWidth(1.2f); //设置高亮线宽度
         //设置圆点颜色(外圈)
         lineDataSet.setCircleColor(Color.parseColor("#008CFF"));
@@ -135,7 +135,7 @@ public class DetailInfoFragment extends Fragment {
         //设置直线图填充
         lineDataSet.setDrawFilled(true);
         //设置填充颜色
-        lineDataSet.setFillColor(Color.parseColor("#3860c6"));
+        lineDataSet.setFillColor(Color.parseColor("#487cfb"));
         LineData lineData = new LineData(lineDataSet);
         //不显示曲线点的具体数值
 //        lineData.setDrawValues(false);

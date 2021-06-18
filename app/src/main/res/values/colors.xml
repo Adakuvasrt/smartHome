@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="first_blue">#3860c6</color>
+    <color name="first_blue">#487cfb</color>
     <color name="second_blue">#3860c6</color>
-    <color name="other">#3860c6</color>
+    <color name="other">#487cfb</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>

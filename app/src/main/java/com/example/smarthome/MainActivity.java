@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smarthome.databinding.ActivityMainBinding;
 
+import java.net.Socket;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    private Socket socket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
