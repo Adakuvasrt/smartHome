@@ -101,15 +101,7 @@ public class DetailInfoFragment extends Fragment {
         YAxis rightYAxis = binding.lineChart.getAxisRight();
         rightYAxis.setEnabled(false);
         //初始化显示数据
-        List<Float> floats = new ArrayList<>();
-        floats.add(6f);
-        floats.add(7f);
-        floats.add(1f);
-        floats.add(4f);
-        floats.add(8f);
-        floats.add(4f);
-        floats.add(6f);
-        floats.add(2f);
+        List<Float> floats = DataFresh.getInstance().temFloats;
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < floats.size(); i++) {
             entries.add(new Entry(i, floats.get(i)));

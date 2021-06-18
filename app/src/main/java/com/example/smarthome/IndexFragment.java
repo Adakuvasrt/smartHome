@@ -108,13 +108,11 @@ public class IndexFragment extends Fragment {
             builder.setPositiveButton("连接", (dialog, which) -> {
                 //刷新界面显示数据
                 try {
-                    new Thread(() -> {
-                        try {
-                            DataFresh.getInstance().getConnect("8.136.16.198", 8848);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }).start();
+                    try {
+                        DataFresh.getInstance().getConnect("8.136.16.198", 8848);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } catch (Exception e) {
                     Log.i("info", e.toString());
                     Toast.makeText(getContext(), "连接异常", Toast.LENGTH_SHORT).show();
