@@ -606,12 +606,6 @@
     <!--        app:layout_constraintTop_toTopOf="@+id/guideline5">-->
     <!--    </androidx.cardview.widget.CardView>-->
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left"
-        app:constraint_referenced_ids="weather_card" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"

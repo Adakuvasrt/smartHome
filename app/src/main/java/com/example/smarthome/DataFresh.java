@@ -1,6 +1,5 @@
 package com.example.smarthome;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -59,16 +58,17 @@ public class DataFresh {
         new Thread(() -> {
             try {
                 socket = new Socket(ip, port);
-                inputStream = socket.getInputStream();
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            inputStream = socket.getInputStream();
+
             byte[] bytes = new byte[30];
             while (true) {
                 //读取服务器数据
                 try {
                     inputStream.read(bytes);
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 //准备一个结构体类
@@ -94,6 +94,6 @@ public class DataFresh {
 
 
     }
-    
+
 
 }

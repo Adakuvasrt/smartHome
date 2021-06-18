@@ -171,7 +171,7 @@ public class IndexFragment extends Fragment {
                 }
                 System.out.println(thread.getState());
 //                thread.start();
-                binding.connectInfo.setClickable(false);
+//                binding.connectInfo.setClickable(false);
                 binding.connectInfo.setText("~ 连接成功");
                 binding.connectInfo.setTextColor(Color.parseColor("#767676"));
             });
@@ -195,8 +195,8 @@ public class IndexFragment extends Fragment {
                 try {
                     //同步请求，要放到子线程执行
                     Response response = call.execute();
-//                    Log.i("TAG", "okHttpGet run: response:" + response.body().string());
                     JsonRootBean jsonRootBean = JSON.parseObject(response.body().string(), JsonRootBean.class);
+                    System.out.println(jsonRootBean.toString());
                     getActivity().runOnUiThread(() -> {
                         binding.wendu.setText(jsonRootBean.getData().getForecast().get(0).getLow() + "\n" + jsonRootBean.getData().getForecast().get(0).getHigh());
                         binding.pm25.setText(String.valueOf(jsonRootBean.getData().getPm25()));
