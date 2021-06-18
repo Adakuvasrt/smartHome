@@ -16,7 +16,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,7 @@ public class DetailInfoFragment extends Fragment {
 
 
     private FragmentDetailInfoBinding binding;
+    private Thread thread;
 
     @Override
     public View onCreateView(
@@ -89,12 +90,12 @@ public class DetailInfoFragment extends Fragment {
         binding.lineChart.setPinchZoom(false);//设置是否启用y轴自动缩放的标志。如果启用，y轴将自动调整到当前x轴范围的最小和最大y值，只要视图改变。这对于显示金融数据的图表尤其有用
         binding.lineChart.setAutoScaleMinMaxEnabled(true);
         //获取X轴
-        XAxis xAxis = binding.lineChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(new String[]{"7s前", "6s前", "5s前", "4s前", "3s前", "2s前", "1s前", "现在"}));
-        xAxis.setDrawGridLines(true);
-        xAxis.setDrawAxisLine(false);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextSize(17f);
+//        XAxis xAxis = binding.lineChart.getXAxis();
+//        xAxis.setValueFormatter(new IndexAxisValueFormatter(new String[]{"7s前", "6s前", "5s前", "4s前", "3s前", "2s前", "1s前", "现在"}));
+//        xAxis.setDrawGridLines(true);
+//        xAxis.setDrawAxisLine(false);
+//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xAxis.setTextSize(17f);
         YAxis leftYAxis = binding.lineChart.getAxisLeft();
         leftYAxis.setAxisMinimum(0);
         leftYAxis.setEnabled(true);
@@ -132,12 +133,38 @@ public class DetailInfoFragment extends Fragment {
         //不显示曲线点的具体数值
 //        lineData.setDrawValues(false);
         binding.lineChart.setData(lineData);
+        thread = new Thread(() -> {
+            int x = 0;
+            while (!thread.isInterrupted()) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return;
+                }
+                LineData lineData1 = binding.lineChart.getLineData();
+                XAxis xxAxis = binding.lineChart.getXAxis();
+                final ILineDataSet dataSetByIndex = lineData.getDataSetByIndex(0);
+                if (dataSetByIndex.getEntryCount() > 7) {
+//                    dataSetByIndex.removeEntry(0);
+                    binding.lineChart.setVisibleXRangeMaximum(8);
+                    binding.lineChart.moveViewToX(dataSetByIndex.getEntryCount() - 8);
+                    dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().temperature));
+                } else {
+                    dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().temperature));
+                }
+                binding.lineChart.notifyDataSetChanged();
+                binding.lineChart.invalidate();
+            }
 
+        });
+        thread.start();
 //        binding.lineChart.invalidate(); // 刷新
     }
 
     @Override
     public void onDestroyView() {
+        thread.interrupt();
         super.onDestroyView();
         binding = null;
     }

@@ -137,18 +137,50 @@ public class DataFresh {
     }
 
     private void freshData() {
-        if (temFloats.size() < 8) temFloats.add(temperature);
-        if (humFloats.size() < 8) humFloats.add(humility);
-        if (lightFloats.size() < 8) lightFloats.add(light);
-        if (eleFloats.size() < 8) eleFloats.add(electricity);
-        if (machineFloats.size() < 8) machineFloats.add(machine);
-        if (xFloats.size() < 8) xFloats.add(xAxis);
-        if (yFloats.size() < 8) yFloats.add(yAxis);
-        if (zFloats.size() < 8) zFloats.add(zAxis);
+//        if (temFloats.size() < 8) temFloats.add(temperature);
+//        if (humFloats.size() < 8) humFloats.add(humility);
+//        if (lightFloats.size() < 8) lightFloats.add(light);
+//        if (eleFloats.size() < 8) eleFloats.add(electricity);
+//        if (machineFloats.size() < 8) machineFloats.add(machine);
+//        if (xFloats.size() < 8) xFloats.add(xAxis);
+//        if (yFloats.size() < 8) yFloats.add(yAxis);
+//        if (zFloats.size() < 8) zFloats.add(zAxis);
+//        else resetArray();
     }
 
     private void resetArray() {
-        temFloats.remove(7);
+        for (int i = 1; i < 8; i++) {
+            temFloats.set(i - 1, temFloats.get(i));
+        }
+        temFloats.add(temperature);
+
+        for (int i = 0; i < 7; i++) {
+            temFloats.set(i + 1, temFloats.get(i));
+        }
+
+        for (int i = 0; i < 7; i++) {
+            temFloats.set(i + 1, temFloats.get(i));
+        }
+
+        for (int i = 0; i < 7; i++) {
+            temFloats.set(i + 1, temFloats.get(i));
+        }
+
+        for (int i = 0; i < 7; i++) {
+            temFloats.set(i + 1, temFloats.get(i));
+        }
+
+        for (int i = 0; i < 7; i++) {
+            temFloats.set(i + 1, temFloats.get(i));
+        }
+
+        for (int i = 0; i < 7; i++) {
+            temFloats.set(i + 1, temFloats.get(i));
+        }
+
+        for (int i = 0; i < 7; i++) {
+            temFloats.set(i + 1, temFloats.get(i));
+        }
 
     }
 

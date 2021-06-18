@@ -118,7 +118,7 @@ public class IndexFragment extends Fragment {
                     Toast.makeText(getContext(), "连接异常", Toast.LENGTH_SHORT).show();
                 }
                 System.out.println(thread.getState());
-                thread.start();
+//                thread.start();
                 binding.connectInfo.setClickable(false);
             });
             builder.setNegativeButton("取消", (dialog, which) -> Log.i("info", "onClick: "));
@@ -141,8 +141,9 @@ public class IndexFragment extends Fragment {
     public void onStart() {
         Log.i("TAG", "onStart: " + thread.getState());
         super.onStart();
-        System.out.println(thread.getState() == Thread.State.TERMINATED);
-        if (thread.getState() == Thread.State.TERMINATED) {
+        System.out.println(thread.getState());
+        if (thread.getState() == Thread.State.TERMINATED | thread.getState() == Thread.State.NEW) {
+            System.out.println("?");
             thread = new Thread(() -> {
                 while (true) {
                     if (thread.isInterrupted()) break;
@@ -164,6 +165,7 @@ public class IndexFragment extends Fragment {
                     });
                 }
             });
+            thread.start();
         }
     }
 
