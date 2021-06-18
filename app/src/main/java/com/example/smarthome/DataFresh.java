@@ -1,14 +1,10 @@
 package com.example.smarthome;
 
-import com.github.mikephil.charting.data.Entry;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 获取Socket通信数据 的单例类
@@ -29,44 +25,9 @@ public class DataFresh {
     public float yAxis;
     public float zAxis;
 
-    List<Float> temFloats;
-    List<Float> humFloats;
-    List<Float> lightFloats;
-    List<Float> eleFloats;
-    List<Float> machineFloats;
-    List<Float> xFloats;
-    List<Float> yFloats;
-    List<Float> zFloats;
-
-
-    List<Entry> tementries;
-    List<Entry> humentries;
-    List<Entry> lightentries;
-    List<Entry> eleentries;
-    List<Entry> machineentries;
-    List<Entry> xentries;
-    List<Entry> yentries;
-    List<Entry> zentries;
 
     private DataFresh() {
-        temFloats = new ArrayList<>();
-        humFloats = new ArrayList<>();
-        lightFloats = new ArrayList<>();
-        eleFloats = new ArrayList<>();
-        machineFloats = new ArrayList<>();
-        xFloats = new ArrayList<>();
-        yFloats = new ArrayList<>();
-        zFloats = new ArrayList<>();
 
-
-        tementries = new ArrayList<>();
-        humentries = new ArrayList<>();
-        lightentries = new ArrayList<>();
-        eleentries = new ArrayList<>();
-        machineentries = new ArrayList<>();
-        xentries = new ArrayList<>();
-        yentries = new ArrayList<>();
-        zentries = new ArrayList<>();
 
     }
 
@@ -123,8 +84,6 @@ public class DataFresh {
                 xAxis = cei.x.get();
                 yAxis = cei.y.get();
                 zAxis = cei.z.get();
-                freshData();
-                System.out.println(temperature);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -135,53 +94,6 @@ public class DataFresh {
 
 
     }
-
-    private void freshData() {
-//        if (temFloats.size() < 8) temFloats.add(temperature);
-//        if (humFloats.size() < 8) humFloats.add(humility);
-//        if (lightFloats.size() < 8) lightFloats.add(light);
-//        if (eleFloats.size() < 8) eleFloats.add(electricity);
-//        if (machineFloats.size() < 8) machineFloats.add(machine);
-//        if (xFloats.size() < 8) xFloats.add(xAxis);
-//        if (yFloats.size() < 8) yFloats.add(yAxis);
-//        if (zFloats.size() < 8) zFloats.add(zAxis);
-//        else resetArray();
-    }
-
-    private void resetArray() {
-        for (int i = 1; i < 8; i++) {
-            temFloats.set(i - 1, temFloats.get(i));
-        }
-        temFloats.add(temperature);
-
-        for (int i = 0; i < 7; i++) {
-            temFloats.set(i + 1, temFloats.get(i));
-        }
-
-        for (int i = 0; i < 7; i++) {
-            temFloats.set(i + 1, temFloats.get(i));
-        }
-
-        for (int i = 0; i < 7; i++) {
-            temFloats.set(i + 1, temFloats.get(i));
-        }
-
-        for (int i = 0; i < 7; i++) {
-            temFloats.set(i + 1, temFloats.get(i));
-        }
-
-        for (int i = 0; i < 7; i++) {
-            temFloats.set(i + 1, temFloats.get(i));
-        }
-
-        for (int i = 0; i < 7; i++) {
-            temFloats.set(i + 1, temFloats.get(i));
-        }
-
-        for (int i = 0; i < 7; i++) {
-            temFloats.set(i + 1, temFloats.get(i));
-        }
-
-    }
+    
 
 }

@@ -31,6 +31,7 @@ public class DetailInfoFragment extends Fragment {
 
     private FragmentDetailInfoBinding binding;
     private Thread thread;
+    String info;
 
     @Override
     public View onCreateView(
@@ -47,7 +48,8 @@ public class DetailInfoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Bundle arguments = getArguments();
         assert arguments != null;
-        String info = arguments.getString("info");
+        info = arguments.getString("info");
+        System.out.println(info);
         binding.lineChart.setNoDataText("没有获取到数据哦~");
         binding.lineChart.setNoDataTextColor(Color.parseColor("#487cfb"));
         //缩放
@@ -102,7 +104,7 @@ public class DetailInfoFragment extends Fragment {
         YAxis rightYAxis = binding.lineChart.getAxisRight();
         rightYAxis.setEnabled(false);
         //初始化显示数据
-        List<Float> floats = DataFresh.getInstance().temFloats;
+        List<Float> floats = List.of(0f);
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < floats.size(); i++) {
             entries.add(new Entry(i, floats.get(i)));
@@ -149,9 +151,60 @@ public class DetailInfoFragment extends Fragment {
 //                    dataSetByIndex.removeEntry(0);
                     binding.lineChart.setVisibleXRangeMaximum(8);
                     binding.lineChart.moveViewToX(dataSetByIndex.getEntryCount() - 8);
-                    dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().temperature));
+                    switch (info) {
+                        case "Temperature":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().temperature));
+                            break;
+                        case "Humidity":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().humility));
+                            break;
+                        case "Light":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().light));
+                            break;
+                        case "Electricity":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().electricity));
+                            break;
+                        case "Machine":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().machine));
+                            break;
+                        case "XAxis":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().xAxis));
+                            break;
+                        case "YAxis":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().yAxis));
+                            break;
+                        case "ZAxis":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().zAxis));
+                            break;
+                    }
+
                 } else {
-                    dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().temperature));
+                    switch (info) {
+                        case "Temperature":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().temperature));
+                            break;
+                        case "Humidity":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().humility));
+                            break;
+                        case "Light":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().light));
+                            break;
+                        case "Electricity":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().electricity));
+                            break;
+                        case "Machine":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().machine));
+                            break;
+                        case "XAxis":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().xAxis));
+                            break;
+                        case "YAxis":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().yAxis));
+                            break;
+                        case "ZAxis":
+                            dataSetByIndex.addEntry(new Entry(x++, DataFresh.getInstance().zAxis));
+                            break;
+                    }
                 }
                 binding.lineChart.notifyDataSetChanged();
                 binding.lineChart.invalidate();
@@ -165,7 +218,8 @@ public class DetailInfoFragment extends Fragment {
     @Override
     public void onDestroyView() {
         thread.interrupt();
-        super.onDestroyView();
         binding = null;
+        super.onDestroyView();
+
     }
 }

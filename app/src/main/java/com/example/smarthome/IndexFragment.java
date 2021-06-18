@@ -83,8 +83,49 @@ public class IndexFragment extends Fragment {
             NavController navController = Navigation.findNavController(v);
             Bundle bundle = new Bundle();
             bundle.putString("info", "Temperature");
-            float[] data = new float[7];
-            bundle.putFloatArray("data", data);
+            navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
+        });
+        binding.humidityCard.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            Bundle bundle = new Bundle();
+            bundle.putString("info", "Humidity");
+            navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
+
+        });
+        binding.lightCard.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            Bundle bundle = new Bundle();
+            bundle.putString("info", "Light");
+            navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
+        });
+        binding.electricityCard.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            Bundle bundle = new Bundle();
+            bundle.putString("info", "Electricity");
+            navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
+        });
+        binding.machineCard.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            Bundle bundle = new Bundle();
+            bundle.putString("info", "Machine");
+            navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
+        });
+        binding.xAxisCard.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            Bundle bundle = new Bundle();
+            bundle.putString("info", "XAxis");
+            navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
+        });
+        binding.yAxisCard.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            Bundle bundle = new Bundle();
+            bundle.putString("info", "YAxis");
+            navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
+        });
+        binding.zAxisCard.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            Bundle bundle = new Bundle();
+            bundle.putString("info", "ZAxis");
             navController.navigate(R.id.action_indexFragment_to_detailInfoFragment, bundle);
         });
 
