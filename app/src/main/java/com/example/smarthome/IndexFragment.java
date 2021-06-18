@@ -16,7 +16,16 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.alibaba.fastjson.JSON;
 import com.example.smarthome.databinding.FragmentIndexBinding;
+import com.example.smarthome.jsondata.JsonRootBean;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -152,7 +161,7 @@ public class IndexFragment extends Fragment {
                 //刷新界面显示数据
                 try {
                     try {
-                        DataFresh.getInstance().getConnect("8.136.16.198", 8848);
+                        DataFresh.getInstance().getConnect("8.136.16.198", 5678);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -172,7 +181,33 @@ public class IndexFragment extends Fragment {
     }
 
     private void onInitData() {
+        OkHttpClient httpClient = new OkHttpClient();
+        String url = "http://t.weather.itboy.net/api/weather/city/101120801";
+        Request getRequest = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
 
+        Call call = httpClient.newCall(getRequest);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //同步请求，要放到子线程执行
+                    Response response = call.execute();
+//                    Log.i("TAG", "okHttpGet run: response:" + response.body().string());
+                    JsonRootBean jsonRootBean = JSON.parseObject(response.body().string(), JsonRootBean.class);
+                    getActivity().runOnUiThread(() -> {
+                        binding.wendu.setText(jsonRootBean.getData().getForecast().get(0).getLow() + "\n" + jsonRootBean.getData().getForecast().get(0).getHigh());
+                        binding.pm25.setText(String.valueOf(jsonRootBean.getData().getPm25()));
+                        binding.shidu.setText(jsonRootBean.getData().getShidu());
+                        binding.textView3.setText(jsonRootBean.getData().getForecast().get(0).getNotice());
+                    });
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     @Override
