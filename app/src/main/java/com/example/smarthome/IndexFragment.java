@@ -156,12 +156,15 @@ public class IndexFragment extends Fragment {
             builder.setTitle("连接设备");
             LayoutInflater inflater = LayoutInflater.from(getContext());
             View view = inflater.inflate(R.layout.dialog_index, null);
+            EditText ipAddress = view.findViewById(R.id.ip_address);
+            EditText portInfo = view.findViewById(R.id.port_info);
             builder.setView(view);
+            builder.create();
             builder.setPositiveButton("连接", (dialog, which) -> {
                 //刷新界面显示数据
                 try {
                     try {
-                        DataFresh.getInstance().getConnect("8.136.16.198", 5678);
+                        DataFresh.getInstance().getConnect(String.valueOf(ipAddress.getText()), Integer.parseInt(String.valueOf(portInfo.getText())));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -176,7 +179,7 @@ public class IndexFragment extends Fragment {
                 binding.connectInfo.setTextColor(Color.parseColor("#767676"));
             });
             builder.setNegativeButton("取消", (dialog, which) -> Log.i("info", "onClick: "));
-            builder.create().show();
+            builder.show();
         });
     }
 
