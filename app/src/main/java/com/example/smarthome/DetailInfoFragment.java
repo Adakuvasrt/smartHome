@@ -1,11 +1,13 @@
 package com.example.smarthome;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.smarthome.databinding.FragmentDetailInfoBinding;
@@ -44,6 +46,7 @@ public class DetailInfoFragment extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Bundle arguments = getArguments();
@@ -71,7 +74,7 @@ public class DetailInfoFragment extends Fragment {
         binding.lineChart.setTouchEnabled(true); // 设置是否可以触摸
         binding.lineChart.setDragEnabled(true);// 是否可以拖拽
         binding.lineChart.setScaleEnabled(true);// 是否可以缩放
-        // 把这个设置为false，禁用所有手势和图表上的触摸，默认：true
+        // 禁用所有手势和图表上的触摸，默认：true
         binding.lineChart.setTouchEnabled(true);
         binding.lineChart.animateY(1000, Easing.EaseInOutQuart);//设置动画
         // 设置图标拖动为允许
@@ -91,13 +94,6 @@ public class DetailInfoFragment extends Fragment {
         // 挤压缩放设置为允许，即X轴和Y轴会成比例缩放，如果设置为false，则变成单独缩放
         binding.lineChart.setPinchZoom(false);//设置是否启用y轴自动缩放的标志。如果启用，y轴将自动调整到当前x轴范围的最小和最大y值，只要视图改变。这对于显示金融数据的图表尤其有用
         binding.lineChart.setAutoScaleMinMaxEnabled(true);
-        //获取X轴
-//        XAxis xAxis = binding.lineChart.getXAxis();
-//        xAxis.setValueFormatter(new IndexAxisValueFormatter(new String[]{"7s前", "6s前", "5s前", "4s前", "3s前", "2s前", "1s前", "现在"}));
-//        xAxis.setDrawGridLines(true);
-//        xAxis.setDrawAxisLine(false);
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//        xAxis.setTextSize(17f);
         YAxis leftYAxis = binding.lineChart.getAxisLeft();
         leftYAxis.setAxisMinimum(0);
         leftYAxis.setEnabled(true);

@@ -55,10 +55,6 @@ public class DataFresh {
         new Thread(() -> {
             try {
                 socket = new Socket(ip, port);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
                 inputStream = socket.getInputStream();
             } catch (Exception e) {
                 e.printStackTrace();

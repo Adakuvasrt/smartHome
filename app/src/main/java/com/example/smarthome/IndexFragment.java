@@ -216,7 +216,6 @@ public class IndexFragment extends Fragment {
     @Override
     public void onStop() {
         if (thread.isAlive()) thread.interrupt();
-        Log.i("TAG", "onStop: ");
         super.onStop();
     }
 
